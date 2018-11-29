@@ -38,5 +38,21 @@ class MyTestCase(unittest.TestCase):
 		self.assertEqual(avg_(a), sum(a)/len(a), "Подсчет среднего неверен, должно было получиться {}".format(sum(a)/len(a)))
 
 
+<<<<<<< HEAD
 if __name__ == '__main__':
 	unittest.main()
+=======
+
+if __name__ == '__main__':
+	unittest.main()
+
+
+
+
+
+
+
+
+
+
+>>>>>>> 1c743db99e5a93313401b79bde35aef09723abda
