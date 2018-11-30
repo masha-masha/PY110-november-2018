@@ -100,6 +100,7 @@ def convert(arg, dict):
     res = list()
     for x in arg:
         res.append(x)
+    dict = sorted(dict.items(), key=lambda x: x[0], reverse=True)
     for x in dict:
         res.append(x[0])
         res.append(x[1])
