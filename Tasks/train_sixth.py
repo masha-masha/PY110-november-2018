@@ -7,20 +7,18 @@
 Дано: список заявок на использование ракет
 Задача: вывести ответ, хватит ли вам одной ракеты, чтобы удовлетворить все заявки на этот день
 """
-applic_list = [(1, 2), (1, 3), (2, 3), (3, 4), (3, 5), (4, 6)]
+import numpy as np
+#applic_list = [(1, 2), (1, 3), (2, 3), (3, 4), (3, 5), (4, 6)]
+applic_list = [(1, 2), (8, 9), (8, 9)] #[(1, 2), (2, 3), (2, 3)]
 
-# суммарное время использования должно быть не больше времени, в течение которого ракета была в аренде
-sum_hours_working = 0
-min_start = 0
-max_end = 0
+# надо только понять, как будет указываться полночь.
+# чтобы при (23,0) и при (24,1) не было range(-23) в 18 строчке.
+
+K = np.zeros(24, dtype=bool)
 for x in applic_list:
-    if x[0] < min_start:
-        min_start = x[0]
-    if x[1] > max_end:
-        max_end = x[1]
-    sum_hours_working += x[1] - x[0]
-
-if max_end - min_start >= sum_hours_working:
-    print("OK")
-else:
-    print("BAD")
+    for i in range(x[1]-x[0]):
+        if K[x[0] + i]:
+            print("Bad")
+            quit()
+        K[x[0] + i] = True
+print("Ok")
